@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nada</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/CSS/styles.css">
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <link rel="icon" type="image-icon" href="/images/website.png">
+
+  <!-- Include AOS Library -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+
+</head>
+<div id="particles-js"></div>
+
+<body class=" text-white">
+
+ <!-- Start Navbar -->
+ <nav class=" text-white px-4 py-4 fixed top-0 left-0 w-full z-50 backdrop-blur-lg">
+    <div class="container mx-auto flex justify-between items-center">
+        
+        <div class="text-xl font-bold text-purple-400">Nada</div>
+
+        
+        <div class="md:hidden">
+            <button id="menu-toggle" class="text-purple-400 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+
+        
+        <div id="menu" class="hidden md:flex space-x-4 md:space-x-6">
+            <a href="#home" class="relative group hover:text-purple-400">
+                Home
+                <span class="absolute bottom-0 left-0 w-0 h-[3px] bg-purple-600 group-hover:w-full transition-all duration-500 delay-100"></span>
+            </a>
+            <a href="#about" class="relative group hover:text-purple-400">
+                About
+                <span class="absolute bottom-0 left-0 w-0 h-[3px] bg-purple-600 group-hover:w-full transition-all duration-500 delay-100"></span>
+            </a>
+            <a href="#portfolio" class="relative group hover:text-purple-400">
+                Portfolio
+                <span class="absolute bottom-0 left-0 w-0 h-[3px] bg-purple-600 group-hover:w-full transition-all duration-500 delay-100"></span>
+            </a>
+            <a href="#contact" class="relative group hover:text-purple-400">
+                Contact
+                <span class="absolute bottom-0 left-0 w-0 h-[3px] bg-purple-600 group-hover:w-full transition-all duration-500 delay-100"></span>
+            </a>
+        </div>
+    </div>
+
+    
+    <div id="mobile-menu" class="md:hidden bg-gray-900 overflow-hidden transition-all duration-500 max-h-0">
+        <div class="flex flex-col space-y-4 px-4 py-4">
+            <a href="#home" class="relative group hover:text-purple-400 mobile-link">
+                Home
+                <span class="absolute bottom-0 left-0 w-0 h-[3px] bg-purple-600 group-hover:w-full transition-all duration-500 delay-100"></span>
+            </a>
+            <a href="#about" class="relative group hover:text-purple-400 mobile-link">
+                About
+                <span class="absolute bottom-0 left-0 w-0 h-[3px] bg-purple-600 group-hover:w-full transition-all duration-500 delay-100"></span>
+            </a>
+            <a href="#portfolio" class="relative group hover:text-purple-400 mobile-link">
+                Portfolio
+                <span class="absolute bottom-0 left-0 w-0 h-[3px] bg-purple-600 group-hover:w-full transition-all duration-500 delay-100"></span>
+            </a>
+            <a href="#contact" class="relative group hover:text-purple-400 mobile-link">
+                Contact
+                <span class="absolute bottom-0 left-0 w-0 h-[3px] bg-purple-600 group-hover:w-full transition-all duration-500 delay-100"></span>
+            </a>
+        </div>
+    </div>
+</nav>
+<!-- End Navbar -->
+
+
+
+<!-- Start Home Section -->
+<section id="home" class="min-h-screen flex items-center justify-between snap-start pt-20 md:pt-16">
+  <div class="container mx-auto px-4 flex flex-col md:flex-row-reverse items-center justify-between">
+    
+    <!-- 3D Container for Desktop -->
+    <div id="3d-container" class="hidden md:block w-full md:w-1/2 h-[500px] rounded-lg overflow-hidden mt-8 md:mt-0" data-aos="zoom-in-up" data-aos-duration="1000">
+      
+    </div>
+
+    <div class="max-w-2xl text-left w-full md:w-1/2">
+      <div class="mb-8" data-aos="fade-up" data-aos-duration="1000">
+        <span class="px-4 py-1 backdrop-blur-sm bg-purple-800/20 text-lg rounded-full border border-purple-500/30 shadow-lg shadow-purple-500/20">
+          Ready to meet me?
+        </span>
+      </div>
+      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight text-white text-shadow-lg" data-aos="fade-up" data-aos-duration="1200">
+        Frontend
+      </h1>
+      <h2 class="text-4xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-400 mb-6 text-shadow-lg" data-aos="fade-up" data-aos-duration="1400">
+        Developer
+      </h2>
+      <div class="text-container">
+        <p class="text-xl text-gray-300 mb-6 text-shadow-md" id="dynamic-text" data-aos="fade-up" data-aos-duration="1600"></p>
+      </div>
+      <p class="text-lg text-gray-400 mb-10 text-shadow-sm text-container" data-aos="fade-up" data-aos-duration="1800">
+        Built with a blend of creativity and powerful technologies.  <br>
+        <span class="text-purple-400 font-semibold">Here’s what drives this experience. ❤</span>
+      </p>
+
+      <div class="flex flex-wrap gap-4 mb-8">
+        <span class="py-2 px-6 backdrop-blur-sm bg-gray-800/20 rounded-full border border-purple-500/30 shadow-lg shadow-purple-500/20 hover:bg-purple-500/30 hover:shadow-purple-500/30 transition-all duration-300 cursor-default" data-aos="fade-right" data-aos-duration="1000">
+          Javascript
+        </span>
+        <span class="py-2 px-6 backdrop-blur-sm bg-gray-800/20 rounded-full border border-purple-500/30 shadow-lg shadow-purple-500/20 hover:bg-purple-500/30 hover:shadow-purple-500/30 transition-all duration-300 cursor-default" data-aos="fade-left" data-aos-duration="1100">
+          Node.js
+        </span>
+        <span class="py-2 px-6 backdrop-blur-sm bg-gray-800/20 rounded-full border border-purple-500/30 shadow-lg shadow-purple-500/20 hover:bg-purple-500/30 hover:shadow-purple-500/30 transition-all duration-300 cursor-default" data-aos="fade-right" data-aos-duration="1200">
+          SQL
+        </span>
+        <span class="py-2 px-6 backdrop-blur-sm bg-gray-800/20 rounded-full border border-purple-500/30 shadow-lg shadow-purple-500/20 hover:bg-purple-500/30 hover:shadow-purple-500/30 transition-all duration-300 cursor-default" data-aos="fade-left" data-aos-duration="1300">
+          Tailwind
+        </span>
+      </div>
+
+      <div class="flex flex-wrap gap-4 mb-12">
+        <button id="projectsButton" class="px-6 py-2 backdrop-blur-sm bg-purple-500/30 rounded-lg border border-purple-500/50 shadow-xl shadow-purple-500/30 hover:bg-purple-600/50 hover:shadow-purple-600/50 flex items-center space-x-3 transition-all duration-300" data-aos="zoom-in" data-aos-duration="1000">
+          <span>Projects</span>
+          <i id="jetIcon" class="fa-solid fa-jet-fighter"></i>
+        </button>
+
+        <button id="contactButton" class="px-6 py-3 backdrop-blur-md bg-gray-800/30 rounded-lg border border-purple-500/50 shadow-xl shadow-purple-500/30 hover:bg-purple-500/50 hover:shadow-purple-500/50 flex items-center space-x-3 transition-all duration-300" data-aos="zoom-in" data-aos-duration="1100">
+          <span>Contact</span>
+          <i id="contactIcon" class="fas fa-envelope text-white"></i>
+        </button>
+      </div>
+
+<!-- Social Icons Section -->
+<div class="flex gap-8 mb-8">
+  <a href="https://github.com/" target="_blank" rel="noopener noreferrer" 
+     class="text-gray-500 hover:text-purple-400 text-2xl transition-all duration-300 hover:scale-110 hover:rotate-6 hover:shadow-lg hover:shadow-purple-500/50"
+     data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="top-bottom">
+    <i class="fab fa-github"></i>
+  </a>
+
+  <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" 
+     class="text-gray-500 hover:text-blue-400 text-2xl transition-all duration-300 hover:scale-110 hover:rotate-6 hover:shadow-lg hover:shadow-blue-500/50"
+     data-aos="fade-up" data-aos-duration="1200" data-aos-anchor-placement="top-bottom">
+    <i class="fab fa-linkedin"></i>
+  </a>
+
+  <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" 
+     class="text-gray-500 hover:text-pink-500 text-2xl transition-all duration-300 hover:scale-110 hover:rotate-6 hover:shadow-lg hover:shadow-pink-500/50"
+     data-aos="fade-up" data-aos-duration="1400" data-aos-anchor-placement="top-bottom">
+    <i class="fab fa-instagram"></i>
+  </a>
+</div>
+
+    </div>
+    
+    <!-- 3D Container for Mobile -->
+    <div id="3d-container-mobile" class="md:hidden w-full h-[300px] rounded-lg overflow-hidden mt-8" data-aos="fade-up" data-aos-duration="1000">
+      
+    </div>
+    
+  </div>
+</section>
+<!-- End Home Section -->
+
+
+
+<!-- Start about section  -->
+<section class="min-h-screen flex items-center justify-center mt-16" id="about">
+  <div class="container mx-auto px-4 text-center" data-aos="fade-up">
+    <h1 class="text-3xl font-semibold text-purple-400">About Me</h1>
+    <p class="text-sm text-gray-400 mt-2" data-aos="fade-up" data-aos-delay="200">
+      <i class="fas fa-lightbulb text-purple-400 text-lg"></i> Every challenge is a new opportunity to grow <i class="fas fa-lightbulb text-purple-400 text-lg"></i>
+    </p>
+
+    <div class="mt-10 grid md:grid-cols-3 gap-8 items-start">
+      <div class="md:col-span-2 order-1 text-left" data-aos="fade-right">
+        <h2 class="text-4xl font-bold text-white leading-tight text-shadow-lg">
+          Hello, I'm <br>
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-400 text-shadow-lg">
+            Ahmed Nada Ahmed
+          </span>
+        </h2>
+        <p class="mt-4 text-gray-300 text-shadow-md">
+          I am a student at the International University of El Alamein in Egypt.<br>
+          Studying at the Faculty of Computer Science and Engineering, specializing in Artificial Intelligence. <br> I have a strong passion for Web Application development.
+        </p>
+        <div class="mt-6 flex gap-4" data-aos="fade-up" data-aos-delay="300">
+          <a href="https://drive.google.com/file/d/14fKOqBfwCjDHfkyZzely_bECxv4KxG-2/view?usp=sharing" target="_blank" rel="noopener noreferrer" 
+            class="px-6 py-2 backdrop-blur-sm bg-purple-800/20 rounded-full border border-purple-500/30 shadow-lg shadow-purple-500/20 hover:bg-purple-500/30 hover:shadow-purple-500/30 transition-all duration-300 text-white flex items-center">
+            <i class="fa-regular fa-file mr-2"></i>Download Resume
+          </a>
+          <button class="px-6 py-2 backdrop-blur-sm bg-gray-800/20 rounded-full border border-purple-500/30 shadow-lg shadow-purple-500/20 hover:bg-purple-500/30 hover:shadow-purple-500/30 transition-all duration-300 text-purple-400 hover:text-white" id="view-projects">
+            <i class="fa-solid fa-code mr-2"></i>View Projects
+          </button>
+        </div>
+      </div>
+      
+      <div class="order-2 md:order-3 flex justify-center" data-aos="zoom-in">
+        <div class="w-60 h-60 rounded-full backdrop-blur-sm bg-gray-800/20 flex items-center justify-center shadow-xl shadow-purple-500/20 overflow-hidden hover:scale-110 hover:shadow-2xl hover:shadow-purple-500/50 hover:bg-gradient-to-r hover:from-gray-900 hover:via-purple-900 hover:to-gray-900 hover:brightness-110 transition-all duration-300">
+          <img src="/images/About_Portfolio.png" alt="Your Image" class="w-full h-full object-cover">
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-gray-800 bg-opacity-50 p-6 rounded-lg flex items-start justify-between hover:scale-105 transform transition-all duration-300 hover:shadow-xl hover:shadow-purple-500 hover:bg-gradient-to-r hover:from-purple-900 hover:via-purple-900 hover:to-gray-900 hover:brightness-110" data-aos="fade-up">
+        <div class="text-left">
+          <i class="fas fa-project-diagram text-4xl text-gray-300 mb-2 hover:text-white"></i>
+          <p class="text-gray-400">TOTAL PROJECTS</p>
+          <p class="text-sm">Each project is a step toward excellence</p>
+        </div>
+        <div class="text-right">
+          <h3 class="text-5xl font-bold text-white" id="projectsCounter">0</h3>
+        </div>
+      </div>
+
+      <div class="bg-gray-800 bg-opacity-50 p-6 rounded-lg flex items-start justify-between hover:scale-105 transform transition-all duration-300 hover:shadow-xl hover:shadow-purple-500 hover:bg-gradient-to-r hover:from-purple-900 hover:via-purple-900 hover:to-gray-900 hover:brightness-110" data-aos="fade-up" data-aos-delay="200">
+        <div class="text-left">
+          <i class="fas fa-certificate text-4xl text-gray-300 mb-2 hover:text-white"></i>
+          <p class="text-gray-400">CERTIFICATES</p>
+          <p class="text-sm">Turning learning into achievements, one certificate at a time</p>
+        </div>
+        <div class="text-right">
+          <h3 class="text-5xl font-bold" id="certificationsCounter">0</h3>
+        </div>
+      </div>
+
+      <div class="bg-gray-800 bg-opacity-50 p-6 rounded-lg flex items-start justify-between hover:scale-105 transform transition-all duration-300 hover:shadow-xl hover:shadow-purple-500 hover:bg-gradient-to-r hover:from-purple-900 hover:via-purple-900 hover:to-gray-900 hover:brightness-110" data-aos="fade-up" data-aos-delay="400">
+        <div class="text-left">
+          <i class="fas fa-graduation-cap text-4xl text-gray-300 mb-2 hover:text-white"></i>
+          <p class="text-gray-400">YEARS OF EXPERIENCE</p>
+          <p class="text-sm">A journey of growth, mastery, and innovation</p>
+        </div>
+        <div class="text-right">
+          <h3 class="text-5xl font-bold">1</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- End about section -->
+
+<!-- Portfolio section -->
+<section class="min-h-screen flex items-center justify-center mt-16" id="portfolio">
+  <div class="container mx-auto px-4 text-center" data-aos="zoom-in" data-aos-delay="400">
+    <h1 class="text-3xl font-semibold text-purple-400" data-aos="fade-down">Portfolio</h1>
+    <p class="text-sm text-gray-400 mt-2" data-aos="fade-up">
+      A collection of my work, skills, and achievements that define my journey
+    </p>
+    
+    <div class="mt-16 flex items-center justify-center w-full h-auto bg-gradient-to-r bg-opacity-80 p-4 rounded-lg shadow-lg">
+      <div class="flex flex-wrap gap-4 justify-center w-full">
+        
+        <div class="text-center text-white" data-aos="zoom-in">
+          <button id="projectsBtn" class="relative flex flex-col items-center justify-center w-24 h-24 md:w-32 md:h-32 bg-transparent border-2 border-purple-400 rounded-lg overflow-hidden transition-all duration-300 group">
+            <i class="fas fa-folder-open text-purple-400 text-2xl md:text-3xl mb-2 z-10 group-hover:text-white transition-colors duration-300"></i>
+            <h3 class="text-sm md:text-base font-semibold z-10 group-hover:text-white transition-colors duration-300">Projects</h3>
+            <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+          </button>
+        </div>
+
+        <div class="text-center text-white" data-aos="zoom-in" data-aos-delay="200">
+          <button id="certificationsBtn" class="relative flex flex-col items-center justify-center w-24 h-24 md:w-32 md:h-32 bg-transparent border-2 border-purple-400 rounded-lg overflow-hidden transition-all duration-300 group">
+            <i class="fas fa-certificate text-gray-300 text-2xl md:text-3xl mb-2 z-10 group-hover:text-white transition-colors duration-300"></i>
+            <h3 class="text-sm md:text-base font-semibold z-10 group-hover:text-white transition-colors duration-300">Certifications</h3>
+            <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+          </button>
+        </div>
+
+        <div class="text-center text-white" data-aos="zoom-in" data-aos-delay="400">
+          <button id="techStackBtn" class="relative flex flex-col items-center justify-center w-24 h-24 md:w-32 md:h-32 bg-transparent border-2 border-purple-400 rounded-lg overflow-hidden transition-all duration-300 group">
+            <i class="fas fa-laptop-code text-blue-400 text-2xl md:text-3xl mb-2 z-10 group-hover:text-white transition-colors duration-300"></i>
+            <h3 class="text-sm md:text-base font-semibold z-10 group-hover:text-white transition-colors duration-300">Skills</h3>
+            <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+          </button>
+        </div>
+
+      </div>
+    </div>
+    
+    <!-- Portfolio Projects Section -->
+    <div id="projectsContent" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-16"></div>
+
+    <!-- Portfolio Certifications Section -->
+    <div id="certificationsContent" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full mt-16"></div>
+
+    <!-- Modal screen for certificate -->
+    <div id="certificateModal" class="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center hidden z-50">
+      <div class="relative bg-white p-6 rounded-lg max-w-3xl w-full">
+        <img id="certificateImage" src="" alt="Certificate" class="w-full h-auto rounded-lg">
+        <button id="closeModalBtn" class="absolute top-2 right-2 text-black text-2xl">&times;</button>
+      </div>
+    </div>
+
+    <!-- Tech Stack Section -->
+    <div id="techStackContent" class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-6 w-full mt-16"></div>
+
+  </div>
+</section>
+<!-- End Portfolio section -->
+
+
+  <!-- Contact Section -->
+  <section class="min-h-screen p-8 mt-16" id="contact" data-aos="fade-up" data-aos-delay="450">
+    <div class="container mx-auto px-4 text-center">
+      
+      <h1 class="text-3xl font-semibold text-purple-400">Contact Me</h1>
+      <p class="text-sm text-gray-400 mt-2">
+        It seems like you're ready to discuss your project privately or share your thoughts in a comment
+      </p>
+
+      <div class="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-12">
+        
+        
+<!-- Left Section: Get in Touch -->
+<div class="bg-gray-800/20 backdrop-blur-sm p-8 rounded-lg border border-purple-500/30 shadow-lg shadow-purple-500/20">
+  <h2 class="text-3xl font-bold mb-6 text-purple-500 flex items-center gap-3 shadow-sm">Get in Touch</h2>
+  <p class="text-gray-400 mb-6 text-left">
+    Have something to discuss? Send me a message and let's talk.
+  </p>
+  <form id="contact-form" class="space-y-4">
+      
+      <div class="relative" id="name-field">
+        <i class="fas fa-user text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2 transition-all duration-200" id="name-icon"></i>
+        <input
+          type="text"
+          placeholder="Your Name"
+          class="w-full p-3 bg-gray-900 text-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600 pl-12"
+          id="name-input"
+          onfocus="changeIconColor('name')"
+          onblur="resetIconColor('name')"
+        />
+      </div>
+      
+      
+      <div class="relative" id="email-field">
+        <i class="fas fa-envelope text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2 transition-all duration-200" id="email-icon"></i>
+        <input
+          type="email"
+          placeholder="Your Email (****@gmail.com)"
+          class="w-full p-3 bg-gray-900 text-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600 pl-12"
+          id="email-input"
+          onfocus="changeIconColor('email')"
+          onblur="resetIconColor('email')"
+        />
+      </div>
+
+      
+      <div class="relative" id="message-field">
+        <i class="fas fa-comment-dots text-gray-400 absolute left-3 top-1/4 transform -translate-y-1/2 transition-all duration-200" id="message-icon"></i>
+
+
+        <textarea
+          placeholder="Your Message"
+          rows="4"
+          class="w-full p-3 bg-gray-900 text-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600 pl-12"
+          id="message-input"
+          onfocus="changeIconColor('message')"
+          onblur="resetIconColor('message')"
+        ></textarea>
+      </div>
+
+
+<div class="flex items-center space-x-3">
+  <button
+    type="submit"
+    id="send-btn"
+    class="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 rounded-md flex items-center justify-center space-x-2"
+  >
+    <i class="fas fa-paper-plane text-white" id="send-icon"></i>
+    <span id="send-text">Send Message</span>
+  </button>
+</div>
+
+
+<div id="status-message" class="hidden mt-4 text-center">
+  <div id="success-message" class="hidden bg-green-500 text-white py-2 px-4 rounded-md">
+    <i class="fas fa-check-circle mr-2"></i> Email sent successfully!
+  </div>
+  <div id="error-message" class="hidden bg-red-500 text-white py-2 px-4 rounded-md">
+    <i class="fas fa-times-circle mr-2"></i> Failed to send email.
+  </div>
+</div>
+
+       </form>
+
+       <div class="mt-8">
+        <h3 class="text-2xl font-bold mb-6 text-purple-500 flex items-center gap-3 shadow-sm">Connect With Me</h3>
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          
+      <a 
+      href="https://www.linkedin.com" 
+      class="group relative bg-gray-900 rounded-xl p-3 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-gradient-to-br from-blue-900/50 to-cyan-900/50"
+      target="_blank">
+      <div class="flex items-center gap-3">
+          <div class="bg-blue-900/30 p-3 rounded-lg">
+              <i class="fab fa-linkedin-in text-xl text-blue-400"></i>
+          </div>
+          <span class="text-lg font-semibold text-gray-300 group-hover:text-white">
+              LinkedIn
+          </span>
+      </div>
+      <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <i class="fas fa-external-link-alt text-blue-400"></i>
+      </div>
+      </a>
+      
+      <a 
+      href="https://github.com" 
+      class="group relative bg-gray-900 rounded-xl p-3 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-gradient-to-br from-purple-900/50 to-pink-900/50"
+      target="_blank">
+      <div class="flex items-center gap-3">
+          <div class="bg-purple-900/30 p-3 rounded-lg">
+              <i class="fab fa-github text-xl text-purple-400"></i>
+          </div>
+          <span class="text-lg font-semibold text-gray-300 group-hover:text-white">
+              GitHub
+          </span>
+      </div>
+      <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <i class="fas fa-external-link-alt text-purple-400"></i>
+      </div>
+      </a>
+      
+      <a 
+      href="https://www.instagram.com" 
+      class="group relative bg-gray-900 rounded-xl p-3 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-gradient-to-br from-pink-900/50 to-red-900/50"
+      target="_blank">
+      <div class="flex items-center gap-3">
+          <div class="bg-pink-900/30 p-3 rounded-lg">
+              <i class="fab fa-instagram text-xl text-pink-400"></i>
+          </div>
+          <span class="text-lg font-semibold text-gray-300 group-hover:text-white">
+              Instagram
+          </span>
+      </div>
+      <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <i class="fas fa-external-link-alt text-pink-400"></i>
+      </div>
+      </a>
+        </div>
+      </div>
+      
+</div>
+<!-- End Left Section: Get in Touch -->
+
+<!-- Right Section: Comments -->
+<div class="bg-gray-800/20 backdrop-blur-sm p-8 rounded-lg border border-purple-500/30 shadow-lg shadow-purple-500/20">
+  
+  
+  <div id="comment-error" class="hidden mb-4 p-3 bg-red-100 text-red-700 rounded-lg"></div>
+
+  <h2 class="text-3xl font-bold mb-6 text-purple-500 flex items-center gap-3 shadow-sm">
+    <i class="fa-regular fa-message text-purple-400 text-2xl"></i>
+    <span>Comments</span>
+    <span class="text-xs font-medium text-white bg-gradient-to-r from-purple-500 to-purple-700 px-3 py-1 rounded-full shadow-md" id="comment-count">
+        0
+    </span>
+</h2>
+
+
+
+
+
+  <form id="comment-form" enctype="multipart/form-data" class="space-y-4 mb-6">
+    
+    <div>
+      <label class="block text-gray-400 mb-2 text-left">Name<span class="text-red-500">*</span></label>
+      <input type="text" name="name" required
+        class="w-full p-3 bg-gray-900 text-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600 pl-10 text-left"
+        placeholder="Enter your name">
+    </div>
+
+    
+    
+
+<div class="relative">
+  <label for="gender" class="block text-gray-300 mb-2 text-left ">Gender <span class="text-red-500">*</span></label>
+  <select 
+    id="gender"
+    name="gender"
+    required
+    class="w-full p-3 bg-gray-900 text-gray-300 rounded-lg border border-purple-500/30 focus:ring-2 focus:ring-purple-600 appearance-none cursor-pointer transition-all hover:border-purple-500"
+  >
+    <option value="" disabled selected class="text-gray-500">Select Gender</option>
+    <option value="male" class="bg-gray-900 text-gray-300">Male</option>
+    <option value="female" class="bg-gray-900 text-gray-300">Female</option>
+  </select>
+  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 pt-6 text-gray-400">
+    <i class="fas fa-chevron-down text-sm"></i>
+  </div>
+</div>
+
+
+    
+    <div>
+      <label class="block text-gray-400 mb-2 text-left">Message<span class="text-red-500">*</span></label>
+      <textarea name="message" rows="4" required 
+      placeholder="Write your message here"
+        class="w-full p-3 bg-gray-900 text-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600 pl-10 text-left"></textarea>
+    </div>
+
+    
+    <div>
+      <label class="block text-gray-500 text-left text-sm font-semibold">Profile Photo (optional)</label>
+      <div class="flex items-center gap-4">
+        <div class="relative cursor-pointer">
+          <div id="profilePreview" class="w-16 h-16 bg-purple-600/20 rounded-full flex items-center justify-center overflow-hidden">
+            <i id="cameraIcon" class="fas fa-camera text-purple-400"></i>
+          </div>
+          <input id="profileInput" type="file" name="profile" accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer">
+        </div>
+        <span class="text-gray-500 text-sm">Max Limit 50 MB</span>
+      </div>
+    </div>
+    
+    
+    
+
+    
+    <button type="submit" 
+      class="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-lg transition-all">
+      <i class="fas fa-paper-plane mr-2"></i> Post Comment
+    </button>
+  </form>
+
+  
+  <div id="comments-list" class="space-y-6 h-80 overflow-y-auto pr-2"></div>
+</div>
+
+  
+      </div>
+    </div>
+  </section>
+  <!-- End Contact Section -->
+
+
+
+
+  <!-- Footer Section-->
+  <footer>
+    <center>
+      <hr class="my-3 border-gray-400 opacity-15 sm:mx-auto lg:my-6 text-center">
+      <span class="block text-sm pb-4 text-gray-500 text-center dark:text-gray-400">© 2025
+        <a href="http://localhost:3001/" 
+        class="hover:underline">Ahmed Nada™</a>. 
+        All Rights Reserved.</span>
+    </center>
+  </footer>
+    <!-- End Footer Section-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+<script src="/script.js"></script>
+<script src="/server.js"></script>
+
+</html>

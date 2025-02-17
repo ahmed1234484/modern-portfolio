@@ -1,0 +1,10 @@
+http://localhost:7000/admin
+ user: 'ahmednadaahmed79@gmail.com',
+  pass: 'zwpk tmxl tpzk atvs'
+  node server.js    
+  npm run start-frontend
+  localhost:7000
+
+
+
+  

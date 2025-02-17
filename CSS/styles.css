@@ -1,0 +1,239 @@
+ /* Custom CSS for smooth scroll and active link */
+ html {
+    scroll-behavior: smooth;
+}
+
+ /* particles.js */
+ #particles-js {
+    position: fixed; 
+    width: 100%;
+    height: 100vh;
+    
+    background: linear-gradient(135deg, #000000, #000000); 
+    z-index: -1; 
+  }
+  
+  
+  body {
+    position: relative;
+    z-index: 1;
+  }
+
+
+
+
+
+
+
+
+
+.active {
+    color: #9333ea; 
+}
+
+.active span {
+    width: 100%; 
+}
+
+
+/* WebKit Browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 8px; 
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #111827; 
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #374151; 
+    border-radius: 8px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #4b5563;
+  }
+  
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #374151 #111827;
+  }
+
+
+  .active-btn {
+    border-color: #000000 !important;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgb(40, 1, 73);
+  }
+
+
+  #projectsContent,
+  #certificationsContent,
+  #techStackContent {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease;
+  }
+
+ 
+
+
+  button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backface-visibility: hidden;
+  }
+
+  button:hover {
+    transform: translateY(-3px);
+  }
+
+  .group-hover\:text-white:hover i,
+  .group-hover\:text-white:hover h3 {
+    color: #fff !important;
+  }
+
+
+
+
+
+
+/* 2 statements in home section */
+.text-container {
+    font-family: Arial, sans-serif;
+    position: relative;
+}
+
+.text-xl {
+    font-size: 1.25rem;
+}
+
+.text-gray-300 {
+    color: #d1d5db;
+}
+
+#dynamic-text {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+
+/* Hovers button in home section */
+#contactButton:hover #contactIcon {
+    animation: bounce 0.5s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+#projectsButton:hover #jetIcon {
+    animation: spin 2s infinite linear; 
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+    
+
+/* test shadow in h2 home section */
+
+.text-shadow-sm {
+    text-shadow: 0 0 6px rgba(159, 122, 234, 0.6); 
+  }
+  
+  .text-shadow-md {
+    text-shadow: 0 0 4px rgba(159, 122, 234, 0.8); 
+  }
+  
+  .text-shadow-lg {
+    text-shadow: 0 0 8px rgba(159, 122, 234, 1); 
+  }
+
+
+  /* project section in portfolio section  */
+  .project-item {
+    display: none;
+    
+  }
+  
+  .project-item:nth-child(-n+3) {
+    display: block;
+  }
+  
+  .see-more-less-btn {
+    background: none;
+    border: 2px solid #8b5cf6;
+    color: #8b5cf6;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 1rem;
+  }
+  
+  .see-more-less-btn:hover {
+    background: #8b5cf6;
+    color: white;
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+  }
+  
+  .project-image {
+    height: 12rem;
+    object-fit: cover;
+    width: 100%;
+  }
+  
+  .reload-btn {
+    background: #4b5563;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    color: white;
+    margin-top: 1rem;
+  }
+  
+  .reload-btn:hover {
+    background: #374151;
+  }
+  
+
+
+
+
+
+/* comments section  */
+  .comment-container {
+    margin-bottom: 1.5rem;
+    will-change: transform, opacity;
+  }
+  
+  .comment-box {
+    min-width: 300px;
+  }
+  
+  @media (max-width: 640px) {
+    .comment-box {
+      min-width: auto;
+      width: calc(100% - 4rem);
+    }
+    
+    .comment-container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+
+
+
+
+
+
+
